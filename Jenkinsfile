@@ -21,8 +21,8 @@ pipeline {
       stage('Build docker image') {
         steps {
           script {
-            def customImage = docker.build('WfaDemoAcr/demo',"./docker")
-            docker.withRegistry('https://wfademoacr.azurecr.io','acr_demo')
+            def customImage = docker.build('rsdemoacr/wfademo',"./docker")
+            docker.withRegistry('https://wfademoacr.azurecr.io','rsdemoacr-cred')
             customImage.push("${env.BUILD_NUMBER}")
           }
         }
