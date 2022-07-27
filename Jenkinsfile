@@ -20,8 +20,8 @@ pipeline {
       stage('Build docker image') {
         steps {
           script {
-            app = docker.build('wfademoacr.azurecr.io/wfademo',"./docker")                
-            withDockerRegistry([credentialsId: 'rsdemoacr-cred', url: 'https://wfademoacr.azurecr.io']) {                
+            app = docker.build('rsdemoacr.azurecr.io/wfademo',"./docker")                
+            withDockerRegistry([credentialsId: 'rsdemoacr-cred', url: 'https://rsdemoacr.azurecr.io']) {                
               app.push("${env.BUILD_NUMBER}")
               app.push('latest')
             }
